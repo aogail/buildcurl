@@ -6,6 +6,6 @@ release:
 
 images: build_images push_images
 build_images:
-	cd targets && find . -name Dockerfile -print0 | xargs -0 -n1 --max-procs=$(shell nproc) $(shell pwd)/targets/dockerize
+	cd targets && find . -name Dockerfile -print0 | xargs -0 -n1 -P 1 `pwd`/dockerize
 push_images:
-	cd targets && find . -name Dockerfile -print0 | xargs -0 -n1 --max-procs=$(shell nproc) $(shell pwd)/targets/push
+	cd targets && find . -name Dockerfile -print0 | xargs -0 -n1 -P 1 `pwd`/push
